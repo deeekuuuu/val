@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff0cdb38 0%, #4e0833f6 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 60px 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #2d3436;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #b6c1f5, #764ba2);
+            margin: 30px auto;
+        }
+
+        .buttons {
+            margin-top: 50px;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            position: relative;
+            min-height: 80px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f120ce86 0%, #ff11cb 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .yes-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .yes-btn:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .yes-btn:active {
+            transform: scale(0.95);
+        }
+
+        .no-btn {
+            background: white;
+            color: #636e72;
+            border: 2px solid #dfe6e9;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .no-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(102, 126, 234, 0.2) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            animation-delay: 1.5s;
+        }
+
+        .no-btn:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-color: #6681fd;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .no-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            button {
+                padding: 15px 35px;
+                font-size: 0.85rem;
+            }
+            
+            .buttons {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background particles -->
+    <div class="particle" style="width: 80px; height: 80px; top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="particle" style="width: 60px; height: 60px; top: 70%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="width: 100px; height: 100px; top: 50%; left: 5%; animation-delay: 4s;"></div>
+    <div class="particle" style="width: 70px; height: 70px; top: 20%; left: 85%; animation-delay: 6s;"></div>
+
+    <div class="container">
+        <h1>Will You Be<br>My Valentine?</h1>
+        <div class="divider"></div>
+        <div class="buttons">
+            <button class="yes-btn" onclick="sayYes()">Yes, I Will</button>
+            <button class="no-btn" id="noBtn">No Thanks</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        let moveCount = 0;
+
+        function sayYes() {
+            window.location.href = 'yes-page.html';
+        }
+
+        function moveButton() {
+            moveCount++;
+            
+            // Redirect to NO page after 2 taps (on the 3rd tap)
+            if (moveCount > 2) {
+                window.location.href = 'second.html';
+                return;
+            }
+            
+            // Get actual button dimensions
+            const btnRect = noBtn.getBoundingClientRect();
+            const btnWidth = btnRect.width;
+            const btnHeight = btnRect.height;
+            
+            // Use larger padding for safety on mobile
+            const padding = 40;
+            
+            // Calculate maximum positions
+            const maxX = window.innerWidth - btnWidth - padding;
+            const maxY = window.innerHeight - btnHeight - padding;
+            
+            // Ensure minimum positions
+            const minX = padding;
+            const minY = padding;
+            
+            // Generate random position within safe range
+            const randomX = minX + Math.random() * (maxX - minX);
+            const randomY = minY + Math.random() * (maxY - minY);
+            
+            // Apply position - make it fixed position
+            if (moveCount === 1 || moveCount === 2) {
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = Math.max(minX, Math.min(randomX, maxX)) + 'px';
+                noBtn.style.top = Math.max(minY, Math.min(randomY, maxY)) + 'px';
+                noBtn.style.zIndex = '1000';
+            }
+            
+            // Change button text
+            if (moveCount === 1) noBtn.textContent = "please ";
+            if (moveCount === 2) noBtn.textContent = "why noo yarrrr";
+        }
+
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            setTimeout(() => {
+                moveButton();
+            }, 10);
+        });
+
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            setTimeout(() => {
+                moveButton();
+            }, 10);
+        }, { passive: false });
+    </script>
+</body>
+</html>
