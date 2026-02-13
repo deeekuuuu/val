@@ -230,42 +230,15 @@
             moveCount++;
             
             // Redirect to NO page after 2 taps (on the 3rd tap)
-            if (moveCount > 2) {
+            if (moveCount > 3) {
                 window.location.href = 'second.html';
                 return;
             }
             
-            // Get actual button dimensions
-            const btnRect = noBtn.getBoundingClientRect();
-            const btnWidth = btnRect.width;
-            const btnHeight = btnRect.height;
-            
-            // Use larger padding for safety on mobile
-            const padding = 40;
-            
-            // Calculate maximum positions
-            const maxX = window.innerWidth - btnWidth - padding;
-            const maxY = window.innerHeight - btnHeight - padding;
-            
-            // Ensure minimum positions
-            const minX = padding;
-            const minY = padding;
-            
-            // Generate random position within safe range
-            const randomX = minX + Math.random() * (maxX - minX);
-            const randomY = minY + Math.random() * (maxY - minY);
-            
-            // Apply position - make it fixed position
-            if (moveCount === 1 || moveCount === 2) {
-                noBtn.style.position = 'fixed';
-                noBtn.style.left = Math.max(minX, Math.min(randomX, maxX)) + 'px';
-                noBtn.style.top = Math.max(minY, Math.min(randomY, maxY)) + 'px';
-                noBtn.style.zIndex = '1000';
-            }
-            
-            // Change button text
-            if (moveCount === 1) noBtn.textContent = "please ";
-            if (moveCount === 2) noBtn.textContent = "why noo yarrrr";
+            // Only change text - don't move the button
+            if (moveCount === 1) noBtn.textContent = "paka";
+            if (moveCount === 2) noBtn.textContent = "wapiss soch le ";
+            if (moveCount === 3) noBtn.textContent = "ek bar or soch le ";
         }
 
         noBtn.addEventListener('click', function(e) {
@@ -283,6 +256,4 @@
         }, { passive: false });
     </script>
 </body>
-
 </html>
-
